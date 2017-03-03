@@ -1,0 +1,29 @@
+{
+    "name": "hasnayeen/tasque",
+    "description": "A command line task manager",
+    "type": "project",
+    "require": {
+        "symfony/console": "^3.2",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hasnayeen",
+            "email": "searching.nehal@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Hasnayeen\\Tasque\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Hasnayeen\\Tasque\\ComposerScripts::postInstall"
+        ]
+    }
+}

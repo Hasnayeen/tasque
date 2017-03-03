@@ -1,0 +1,31 @@
+#! /usr/bin/env php
+
+<?php
+
+use Hasnayeen\Tasque\DatabaseAdapter;
+use Symfony\Component\Console\Application;
+
+require "vendor/autoload.php";
+
+$app = new Application('Tasque', 1.0);
+
+try
+{
+   $pdo = new PDO('sqlite:db.sqlite'); 
+   $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (Exception $e)
+{
+    echo $e->getMessage();
+    exit(1);
+}
+
+$dbAdapter = new DatabaseAdapter($pdo);
+
+$app->add(new Hasnayeen\Tasque\ShowCommand($dbAdapter));
+$app->add(new Hasnayeen\Tasque\AddCommand($dbAdapter));
+$app->add(new Hasnayeen\Tasque\DoneCommand($dbAdapter));
+$app->add(new Hasnayeen\Tasque\UndoneCommand($dbAdapter));
+$app->add(new Hasnayeen\Tasque\RemoveCommand($dbAdapter));
+$app->run();
