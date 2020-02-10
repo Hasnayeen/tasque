@@ -3,7 +3,7 @@
     "description": "A command line task manager",
     "type": "project",
     "require": {
-        "symfony/console": "^3.2",
+        "symfony/console": "^4.4",
         "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
